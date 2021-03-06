@@ -4,7 +4,7 @@
 	<description>plugin build file.</description>
 
 	<property name="plugin.id" value="jp.co.dgic.eclipse.jdt.djunit" />
-	<property name="version" value="0.8.6"/>
+	<property name="version" value="0.9.0"/>
 
 	<property name="runtime.name" value="djunit" />
 	<property name="source.name" value="${runtime.name}-src" />
@@ -19,9 +19,6 @@
 	<property name="updatesite.plugins.dir" value="${updatesite.dir}/plugins" />
 	<property name="updatesite.feature.jar.name" value="${plugin.id}_${eclipse.version}" />
 
-	<property name="asm1.5.x.folder" value="../djUnit-asm-1.5.x" />
-	<property name="asm2.x.folder" value="../djUnit-asm-2.x" />
-
 	<target name="release">
 
 		<delete dir="${dist.dir}" />
@@ -33,12 +30,6 @@
 			<fileset dir="src" includes="resources*.properties"></fileset>
 		</copy>
 		
-		<!-- copy asm15x,2x files to bin directory -->
-		<copy todir="bin">
-			<fileset dir="${asm1.5.x.folder}/bin"/>
-			<fileset dir="${asm2.x.folder}/bin"/>
-		</copy>
-
 		<!-- create djunit.jar -->
 		<zip destfile="${dist.dir}/${runtime.name}.jar">
 			<zipfileset dir="bin">
@@ -63,10 +54,6 @@
 				<exclude name="**/ClassModifier.java"/>
 			</zipfileset>
 			<zipfileset dir="src" includes="**/*.properties"/>
-			<zipfileset dir="asm3.x_2.x"/>
-			<zipfileset dir="asm3.x"/>
-			<zipfileset dir="${asm1.5.x.folder}/src"/>
-			<zipfileset dir="${asm2.x.folder}/src"/>
 		</zip>
 
 		<!-- copy files to temp directory -->
@@ -124,7 +111,6 @@
 		</zip>
 		<zip destfile="${updatesite.features.dir}/${updatesite.feature.jar.name}.jar">
 			<zipfileset dir="./" includes="feature.xml"/>
-			<zipfileset dir="./" includes="dgic.png"/>
 		</zip>
 
 		<!-- clean up -->

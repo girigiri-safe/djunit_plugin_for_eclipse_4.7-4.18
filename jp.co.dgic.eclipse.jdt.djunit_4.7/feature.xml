@@ -2,8 +2,7 @@
 <feature
       id="jp.co.dgic.eclipse.jdt.djunit.feature"
       label="djUnit plugin for Eclipse 4.7.x"
-      version="0.8.6"
-      image="dgic.png">
+      version="0.8.6">
 
    <description>
       0.8.6 [2011/09/30]

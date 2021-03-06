@@ -21,12 +21,11 @@
  */
 package com.jcoverage.coverage;
 
+import jp.co.dgic.djunit.asm.ClassWriter;
 import jp.co.dgic.eclipse.jdt.internal.coverage.util.CoverageUtil;
 import jp.co.dgic.testing.common.AbstractAsmModifier;
 import jp.co.dgic.testing.common.asm.AsmClassReader;
-import jp.co.dgic.testing.common.virtualmock.asm.AsmClassChecker;
-
-import org.objectweb.asm.ClassWriter;
+import jp.co.dgic.testing.common.asm.AsmClassUtils;
 
 import com.jcoverage.coverage.asm.AsmClassCoverageTargetLineCollector;
 import com.jcoverage.coverage.asm.AsmClassInstrumenter;
@@ -42,7 +41,7 @@ public class AsmCoverageInstrumenter extends AbstractAsmModifier {
 		if (!CoverageUtil.isUseCoverage())  return null;
 		if (!CoverageUtil.isIncluded(className)) return null;
 		if (CoverageUtil.isExcluded(className)) return null;
-
+		
 		AsmClassCoverageTargetLineCollector collector = new AsmClassCoverageTargetLineCollector();
 		cr.accept(collector);
 //		AsmClassChecker acc = new AsmClassChecker();
@@ -52,7 +51,7 @@ public class AsmCoverageInstrumenter extends AbstractAsmModifier {
 //		if (acc.isInterface() || acc.isAnnotation() || acc.isEnum()) return null;
 
 //		ClassWriter cw = new AsmClassWriter();
-		ClassWriter cw = AsmClassReader.createClassWriter();
+		ClassWriter cw = AsmClassUtils.createClassWriter();
 		AsmClassInstrumenter cv = new AsmClassInstrumenter(cw);
 		cv.setEnum(collector.isEnum());	// version 0.8.5
 		cv.setFinallyLines(collector.getFinallyLines());	// version 0.8.5
@@ -62,7 +61,6 @@ public class AsmCoverageInstrumenter extends AbstractAsmModifier {
 			(InstrumentationInternal) InstrumentationFactory
 				.getInstance()
 				.newInstrumentation(className);
-
 		InstrumentData data = cv.getInstrumentData();
 		i.setSourceLineNumbers(data.getSourceLineNumbers());
 		i.setSourceFileName(data.getSourceFileName());

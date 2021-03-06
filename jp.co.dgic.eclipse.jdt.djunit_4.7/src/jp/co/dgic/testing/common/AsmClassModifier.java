@@ -22,6 +22,7 @@
 package jp.co.dgic.testing.common;
 
 import jp.co.dgic.testing.common.asm.AsmClassReader;
+import jp.co.dgic.testing.common.asm.AsmClassUtils;
 import jp.co.dgic.testing.common.virtualmock.InternalMockObjectManager;
 import jp.co.dgic.testing.common.virtualmock.asm.AsmAdviceImplementer;
 import jp.co.dgic.testing.common.virtualmock.asm.AsmClassChecker;
@@ -46,7 +47,7 @@ public class AsmClassModifier implements IClassModifier {
 		InternalMockObjectManager.printConsole("#################################################");
 
 //		AsmClassReader cr = new AsmClassReader(className);
-		AsmClassReader cr = AsmClassReader.createAsmClassReader(className);
+		AsmClassReader cr = AsmClassUtils.createAsmClassReader(className);
 		AsmClassChecker acc = AsmClassChecker.getInstance(className, cr);
 //		AsmClassChecker acc = new AsmClassChecker();
 //		cr.accept(acc);

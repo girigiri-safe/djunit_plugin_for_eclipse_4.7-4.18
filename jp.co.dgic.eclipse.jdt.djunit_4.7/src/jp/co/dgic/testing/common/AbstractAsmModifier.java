@@ -22,6 +22,8 @@
 package jp.co.dgic.testing.common;
 
 import jp.co.dgic.testing.common.asm.AsmClassReader;
+import jp.co.dgic.testing.common.asm.AsmClassUtils;
+import jp.co.dgic.testing.common.virtualmock.InternalMockObjectManager;
 
 public abstract class AbstractAsmModifier {
 
@@ -44,10 +46,12 @@ public abstract class AbstractAsmModifier {
 	public byte[] getModifiedByteCode(String className, AsmClassReader cr) throws Exception {
 
 		byte[] modifiedByteCode = modify(className, cr);
+		
+		InternalMockObjectManager.printConsole("[AbstractAsmModifier.getModifiedByteCode] ModifierName = " + name + ", className = " + className + ", modifiedByteCode = " + modifiedByteCode);
 
 		if (modifiedByteCode != null) {
 //			cr = new AsmClassReader(modifiedByteCode);
-			cr = AsmClassReader.createAsmClassReader(modifiedByteCode);
+			cr = AsmClassUtils.createAsmClassReader(modifiedByteCode);
 		}
 
 		if (nextModifier == null) {

@@ -38,9 +38,11 @@ public class DJUnitUtil {
 
 	public static final String BYTECODE_LIBRARY_KEY = "jp.co.dgic.eclipse.classloader.bytecodelibrary";
 
-	public static final String BYTECODE_LIBRARY_ASM = "ASM";
-	public static final String BYTECODE_LIBRARY_ASM2 = "ASM2";
-	public static final String BYTECODE_LIBRARY_ASM15 = "ASM15";
+//	public static final String BYTECODE_LIBRARY_ASM = "ASM";
+//	public static final String BYTECODE_LIBRARY_ASM2 = "ASM2";
+//	public static final String BYTECODE_LIBRARY_ASM15 = "ASM15";
+	public static final String BYTECODE_LIBRARY_ASM5 = "ASM5";
+	public static final String BYTECODE_LIBRARY_ASM9 = "ASM9";
 	
 	private static String[] sourceDirectries;
 	private static String[] classExclusions;

@@ -6,9 +6,8 @@ Bundle-Version: 0.8.6
 Bundle-ClassPath: djunit.jar,
  lib/jcoverage-djunit-1.0.5.jar,
  lib/jakarta-oro-2.0.7.jar,
- lib/asm-3.1.jar
+ lib/djunit-asm-5.2.jar
 Bundle-Activator: jp.co.dgic.eclipse.jdt.internal.junit.ui.DJUnitPlugin
-Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: .,
  com.jcoverage.ant,
@@ -25,6 +24,8 @@ Export-Package: .,
  com.jcoverage.tool.merge,
  com.jcoverage.util,
  jp.co.dgic.djunit.ant,
+ jp.co.dgic.djunit.asm,
+ jp.co.dgic.djunit.asm.signature,
  jp.co.dgic.eclipse.jdt.internal.coverage.report,
  jp.co.dgic.eclipse.jdt.internal.coverage.report.html,
  jp.co.dgic.eclipse.jdt.internal.coverage.ui,
@@ -34,21 +35,17 @@ Export-Package: .,
  jp.co.dgic.eclipse.jdt.internal.junit.ui,
  jp.co.dgic.testing.common,
  jp.co.dgic.testing.common.asm,
- jp.co.dgic.testing.common.asm3x,
  jp.co.dgic.testing.common.coverage,
  jp.co.dgic.testing.common.util,
  jp.co.dgic.testing.common.virtualmock,
  jp.co.dgic.testing.common.virtualmock.asm,
- jp.co.dgic.testing.common.virtualmock.asm3x,
  jp.co.dgic.testing.framework,
  org.apache.oro.io,
  org.apache.oro.text,
  org.apache.oro.text.awk,
  org.apache.oro.text.perl,
  org.apache.oro.text.regex,
- org.apache.oro.util,
- org.objectweb.asm,
- org.objectweb.asm.signature
+ org.apache.oro.util
 Require-Bundle: org.eclipse.ui.ide,
  org.eclipse.jface.text,
  org.eclipse.ui,

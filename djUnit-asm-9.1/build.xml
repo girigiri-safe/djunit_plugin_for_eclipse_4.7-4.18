@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<project default="release">
+
+	<description>make djunit-asm jar</description>
+
+	<property name="version" value="9.1"/>
+	<property name="jar.name" value="djunit-asm-${version}" />
+	<property name="dist.dir" value="dist" />
+
+	<target name="release">
+
+		<delete dir="${dist.dir}" />
+		<mkdir dir="${dist.dir}" />
+
+		<!-- create djunit.jar -->
+		<zip destfile="${dist.dir}/${jar.name}.jar">
+			<zipfileset dir="bin" />
+		</zip>
+
+	</target>
+
+</project>

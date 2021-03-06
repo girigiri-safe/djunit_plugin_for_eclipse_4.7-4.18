@@ -190,19 +190,19 @@ public class DJUnitLaunchConfiguration extends JUnitLaunchConfigurationDelegate 
 		// version 0.8.4
 		String asmType = DJUnitProjectPropertyPage.readBytecodeLibrary(javaProject.getProject());
 		URL asmLibURL = null;
-		if (DJUnitUtil.BYTECODE_LIBRARY_ASM2.equals(asmType)) {
-			asmLibURL = new URL(djunitURL, LIB_DIR + "asm-2.2.1.jar");
-		} else if (DJUnitUtil.BYTECODE_LIBRARY_ASM15.equals(asmType)) {
-			asmLibURL = new URL(djunitURL, LIB_DIR + "asm-1.5.3.jar");
+		if (DJUnitUtil.BYTECODE_LIBRARY_ASM5.equals(asmType)) {
+			asmLibURL = new URL(djunitURL, LIB_DIR + "djunit-asm-5.2.jar");
+		} else if (DJUnitUtil.BYTECODE_LIBRARY_ASM9.equals(asmType)) {
+			asmLibURL = new URL(djunitURL, LIB_DIR + "djunit-asm-9.1.jar");
 		} else {
-			asmLibURL = new URL(djunitURL, LIB_DIR + "asm-3.1.jar");
+			asmLibURL = new URL(djunitURL, LIB_DIR + "djunit-asm-5.2.jar");
 		}
 		junitEntries.add(FileLocator.toFileURL(asmLibURL).getFile());
-		if (DJUnitUtil.BYTECODE_LIBRARY_ASM15.equals(asmType)) {
-			junitEntries.add(FileLocator.toFileURL(
-					new URL(djunitURL, LIB_DIR + "asm-attrs-1.5.3.jar"))
-					.getFile());
-		}
+//		if (DJUnitUtil.BYTECODE_LIBRARY_ASM15.equals(asmType)) {
+//			junitEntries.add(FileLocator.toFileURL(
+//					new URL(djunitURL, LIB_DIR + "asm-attrs-1.5.3.jar"))
+//					.getFile());
+//		}
 
 		junitEntries.add(FileLocator.toFileURL(
 				new URL(djunitURL, LIB_DIR + "jakarta-oro-2.0.7.jar"))

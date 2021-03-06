@@ -92,9 +92,11 @@ public class DJUnitProjectPropertyPage extends PropertyPage {
 	private static final String USE_NOVERIFY_KEY = "UseNoverify";
 	private static final String BYTECODE_LIBRARY_KEY = "BytecodeLibrary";
 	
-	private static final String BYTECODE_LIBRARY_TEXT_ASM30 = "ASM3.x";
-	private static final String BYTECODE_LIBRARY_TEXT_ASM20 = "ASM2.x";
-	private static final String BYTECODE_LIBRARY_TEXT_ASM15 = "ASM1.5.x";
+//	private static final String BYTECODE_LIBRARY_TEXT_ASM30 = "ASM3.x";
+//	private static final String BYTECODE_LIBRARY_TEXT_ASM20 = "ASM2.x";
+//	private static final String BYTECODE_LIBRARY_TEXT_ASM15 = "ASM1.5.x";
+	private static final String BYTECODE_LIBRARY_TEXT_ASM5 = "ASM5.x (Java5 or newer JRE/JDK is required)";
+	private static final String BYTECODE_LIBRARY_TEXT_ASM9 = "ASM9.x (Java7 or newer JRE/JDK is required)";
 
 	private static final String COVERAGE_REPORT_CHARSET_KEY = "CoverageReportCharset";
 
@@ -104,9 +106,8 @@ public class DJUnitProjectPropertyPage extends PropertyPage {
 	private Button useVirtualMockButton;
 	private Button ignoreLibraryButton;
 	private Button useNoverifyButton;
-	private Button useAsm;
-	private Button useAsm2;
-	private Button useAsm15;
+	private Button useAsm5;
+	private Button useAsm9;
 //	private Button useBcel;		// remove(version 0.8.4)
 	private Text workDirectoryName;
 //	private ExcludePropertyPanel junitExcludedProperty;
@@ -250,28 +251,26 @@ public class DJUnitProjectPropertyPage extends PropertyPage {
 
 		Group libGroup = new Group(c, SWT.NONE);
 		GridLayout groupLayout = new GridLayout();
-		groupLayout.numColumns = 2;
+		groupLayout.numColumns = 1;
 		libGroup.setLayout(groupLayout);
 		libGroup.setText(DJUnitMessages.getString("DJUnitProjectPropertyPage.classloader.label.bytecodelibrary"));
 
-		useAsm = new Button(libGroup, SWT.RADIO);
-		useAsm.setText(BYTECODE_LIBRARY_TEXT_ASM30);
-		useAsm2 = new Button(libGroup, SWT.RADIO);
-		useAsm2.setText(BYTECODE_LIBRARY_TEXT_ASM20);
-		useAsm15 = new Button(libGroup, SWT.RADIO);
-		useAsm15.setText(BYTECODE_LIBRARY_TEXT_ASM15);
+		useAsm5 = new Button(libGroup, SWT.RADIO);
+		useAsm5.setText(BYTECODE_LIBRARY_TEXT_ASM5);
+		useAsm9 = new Button(libGroup, SWT.RADIO);
+		useAsm9.setText(BYTECODE_LIBRARY_TEXT_ASM9);
 
 		// remove (version 0.8.4)
 //		useBcel = new Button(libGroup, SWT.RADIO);
 //		useBcel.setText(DJUnitUtil.BYTECODE_LIBRARY_BCEL);
 
 		String library = readBytecodeLibrary();
-		if (DJUnitUtil.BYTECODE_LIBRARY_ASM2.equals(library)) {
-			useAsm2.setSelection(true);
-		} else if (DJUnitUtil.BYTECODE_LIBRARY_ASM15.equals(library)) {
-			useAsm15.setSelection(true);
+		if (DJUnitUtil.BYTECODE_LIBRARY_ASM5.equals(library)) {
+			useAsm5.setSelection(true);
+		} else if (DJUnitUtil.BYTECODE_LIBRARY_ASM9.equals(library)) {
+			useAsm9.setSelection(true);
 		} else {
-			useAsm.setSelection(true);
+			useAsm5.setSelection(true);
 		}
 
 		useNoverifyButton = new Button(c, SWT.CHECK);
@@ -308,11 +307,11 @@ public class DJUnitProjectPropertyPage extends PropertyPage {
 			p.put(USE_NOVERIFY_KEY, new Boolean(useNoverifyButton.getSelection()).toString());
 
 //			String library = useBcel.getSelection() ? DJUnitUtil.BYTECODE_LIBRARY_BCEL : DJUnitUtil.BYTECODE_LIBRARY_ASM;
-			String library = DJUnitUtil.BYTECODE_LIBRARY_ASM;
-			if (useAsm2.getSelection()) {
-				library = DJUnitUtil.BYTECODE_LIBRARY_ASM2;
-			} else if (useAsm15.getSelection()) {
-				library = DJUnitUtil.BYTECODE_LIBRARY_ASM15;
+			String library = DJUnitUtil.BYTECODE_LIBRARY_ASM5;
+			if (useAsm5.getSelection()) {
+				library = DJUnitUtil.BYTECODE_LIBRARY_ASM5;
+			} else if (useAsm9.getSelection()) {
+				library = DJUnitUtil.BYTECODE_LIBRARY_ASM9;
 			}
 			p.put(BYTECODE_LIBRARY_KEY, library);
 
@@ -397,7 +396,7 @@ public class DJUnitProjectPropertyPage extends PropertyPage {
 	}
 
 	private String readBytecodeLibrary() {
-		String library = DJUnitUtil.BYTECODE_LIBRARY_ASM;
+		String library = DJUnitUtil.BYTECODE_LIBRARY_ASM5;
 		try {
 			library = readBytecodeLibrary(getJavaProject().getProject());
 		} catch (Throwable t) {
@@ -522,7 +521,7 @@ public class DJUnitProjectPropertyPage extends PropertyPage {
 	public static String readBytecodeLibrary(IProject project) {
 		String bytecodeLibrary = getProperties(project).getProperty(BYTECODE_LIBRARY_KEY);
 		if (bytecodeLibrary == null || "".equals(bytecodeLibrary)) {
-			return DJUnitUtil.BYTECODE_LIBRARY_ASM;
+			return DJUnitUtil.BYTECODE_LIBRARY_ASM5;
 		}
 		return bytecodeLibrary;
 	}
@@ -645,9 +644,11 @@ public class DJUnitProjectPropertyPage extends PropertyPage {
 //		// JUnit
 //		junitExcludedProperty.setUseDefault(true);
 		useNoverifyButton.setSelection(false);
-		useAsm.setSelection(true);
-		useAsm2.setSelection(false);
-		useAsm15.setSelection(false);
+//		useAsm.setSelection(true);
+//		useAsm2.setSelection(false);
+//		useAsm15.setSelection(false);
+		useAsm5.setSelection(true);
+		useAsm9.setSelection(false);
 //		useBcel.setSelection(false); // remove (version 0.8.4)
 
 		reportCharset.setText("");	// version 0.8.5

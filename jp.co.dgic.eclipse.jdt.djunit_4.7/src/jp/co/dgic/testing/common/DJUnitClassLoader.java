@@ -25,6 +25,7 @@ import java.lang.reflect.Method;
 import java.net.URLClassLoader;
 
 import jp.co.dgic.testing.common.util.DJUnitUtil;
+import jp.co.dgic.testing.common.virtualmock.InternalMockObjectManager;
 
 public class DJUnitClassLoader extends URLClassLoader {
 
@@ -47,6 +48,12 @@ public class DJUnitClassLoader extends URLClassLoader {
 	}
 
 	protected Class findClass(String name) throws ClassNotFoundException {
+		
+		if (name.startsWith("jp.co.dgic.target")) {
+			InternalMockObjectManager.printConsole("#################################################");
+			InternalMockObjectManager.printConsole("#### DJUnitClassLoader load target  [" + name + "]");
+			InternalMockObjectManager.printConsole("#################################################");
+		}
 
 		if (classModifier == null || !DJUnitUtil.isProjectsSource(name)) {
 			return super.findClass(name);
@@ -55,6 +62,10 @@ public class DJUnitClassLoader extends URLClassLoader {
 		if (DJUnitUtil.isExcluded(name)) {
 			return super.findClass(name);
 		}
+
+		InternalMockObjectManager.printConsole("#################################################");
+		InternalMockObjectManager.printConsole("#### DJUnitClassLoader modify target  [" + name + "]");
+		InternalMockObjectManager.printConsole("#################################################");
 
 		byte[] data = getModifiedClass(name);
 		if (data == null) {
@@ -84,9 +95,9 @@ public class DJUnitClassLoader extends URLClassLoader {
 
 		String library = System.getProperty(DJUnitUtil.BYTECODE_LIBRARY_KEY);
 		String modifierClassName = ASM_CLASS_MODIFIER_CLASS_NAME;
-		if (DJUnitUtil.BYTECODE_LIBRARY_ASM15.equalsIgnoreCase(library)) {
-			modifierClassName = ASM_15x_CLASS_MODIFIER_CLASS_NAME;
-		}
+//		if (DJUnitUtil.BYTECODE_LIBRARY_ASM15.equalsIgnoreCase(library)) {
+//			modifierClassName = ASM_15x_CLASS_MODIFIER_CLASS_NAME;
+//		}
 
 		Class cls = null;
 		try {
