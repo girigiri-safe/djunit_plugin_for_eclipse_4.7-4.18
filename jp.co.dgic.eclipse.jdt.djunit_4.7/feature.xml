@@ -2,14 +2,13 @@
 <feature
       id="jp.co.dgic.eclipse.jdt.djunit.feature"
       label="djUnit plugin for Eclipse 4.7.x"
-      version="0.8.6">
+      version="0.9.0">
 
    <description>
-      0.8.6 [2011/09/30]
-       - Changed a exception handler of djUnit class loader.
-       - [Fixed bug] Mojibake of djUnit class loader message.
-       - [Fixed bug] SWT&apos;s &quot;no more handles&quot; occurs
-       - Bytecode process was improved.
+      0.9.0 [2021/03/05]
+       - ASM 3.x, 2.x and 1.5 removed.
+       - Repackaged ASM 5.x, 9.x. included.
+       - java8 and java11 supported.
    </description>
 
    <copyright>

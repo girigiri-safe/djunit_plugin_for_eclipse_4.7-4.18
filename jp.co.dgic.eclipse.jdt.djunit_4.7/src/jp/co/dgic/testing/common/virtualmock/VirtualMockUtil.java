@@ -21,10 +21,6 @@
  */
 package jp.co.dgic.testing.common.virtualmock;
 
-import org.apache.oro.text.regex.PatternCompiler;
-import org.apache.oro.text.regex.Perl5Compiler;
-import org.apache.oro.text.regex.Perl5Matcher;
-
 import jp.co.dgic.testing.common.util.DJUnitUtil;
 
 public class VirtualMockUtil {
@@ -71,11 +67,17 @@ public class VirtualMockUtil {
 		if (patterns == null) {
 			return false;
 		}
-		Perl5Matcher matcher = new Perl5Matcher();
-		PatternCompiler compiler = new Perl5Compiler();
+//		Perl5Matcher matcher = new Perl5Matcher();
+//		PatternCompiler compiler = new Perl5Compiler();
 		for (int index = 0; index < patterns.length; index++) {
 			try {
-				if (matcher.matches(className, compiler.compile(patterns[index]))) {
+//				if (matcher.matches(className, compiler.compile(patterns[index]))) {
+//					return true;
+//				}
+				if (className == null) {
+					continue;
+				}
+				if (className.matches(patterns[index])) {
 					return true;
 				}
 			} catch (Exception e) {

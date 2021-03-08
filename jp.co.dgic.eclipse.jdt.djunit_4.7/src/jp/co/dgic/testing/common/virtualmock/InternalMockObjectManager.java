@@ -225,17 +225,15 @@ public class InternalMockObjectManager {
 	}
 
 	public static void printGetReturnValue(String classAndMethodNameName) {
-		if (System.getProperty("test.debug") == null) return;
 		printConsole("[[[getReturnValue]]] : " + classAndMethodNameName);
 	}
 
 	private static void printIndicateCalled(String classAndMethodName, Object[] arguments) {
-		if (System.getProperty("test.debug") == null) return;
 		printConsole("[[[indicateCalled]]] : " + classAndMethodName + ", " + arguments);
 	}
 
 	public static void printConsole(String message) {
-		String debug = System.getProperty("test.debug");
+		String debug = System.getProperty("djunit.debug.mode");
 		if (debug == null) {
 			return;
 		}

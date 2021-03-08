@@ -8,7 +8,6 @@
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="lib" path="lib/jcoverage-djunit-1.0.5.jar" sourcepath="jcoverage-1.0.5-patch.zip"/>
-	<classpathentry exported="true" kind="lib" path="lib/jakarta-oro-2.0.7.jar"/>
 	<classpathentry kind="lib" path="lib/djunit-asm-5.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

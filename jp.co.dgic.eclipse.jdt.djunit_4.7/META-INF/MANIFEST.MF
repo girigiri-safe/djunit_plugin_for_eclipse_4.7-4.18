@@ -5,7 +5,6 @@ Bundle-SymbolicName: jp.co.dgic.eclipse.jdt.djunit; singleton:=true
 Bundle-Version: 0.8.6
 Bundle-ClassPath: djunit.jar,
  lib/jcoverage-djunit-1.0.5.jar,
- lib/jakarta-oro-2.0.7.jar,
  lib/djunit-asm-5.2.jar
 Bundle-Activator: jp.co.dgic.eclipse.jdt.internal.junit.ui.DJUnitPlugin
 Bundle-Localization: plugin
@@ -39,13 +38,7 @@ Export-Package: .,
  jp.co.dgic.testing.common.util,
  jp.co.dgic.testing.common.virtualmock,
  jp.co.dgic.testing.common.virtualmock.asm,
- jp.co.dgic.testing.framework,
- org.apache.oro.io,
- org.apache.oro.text,
- org.apache.oro.text.awk,
- org.apache.oro.text.perl,
- org.apache.oro.text.regex,
- org.apache.oro.util
+ jp.co.dgic.testing.framework
 Require-Bundle: org.eclipse.ui.ide,
  org.eclipse.jface.text,
  org.eclipse.ui,

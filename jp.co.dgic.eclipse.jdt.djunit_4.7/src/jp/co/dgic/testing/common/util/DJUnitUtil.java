@@ -24,10 +24,6 @@ package jp.co.dgic.testing.common.util;
 import java.io.File;
 import java.util.StringTokenizer;
 
-import org.apache.oro.text.regex.PatternCompiler;
-import org.apache.oro.text.regex.Perl5Compiler;
-import org.apache.oro.text.regex.Perl5Matcher;
-
 public class DJUnitUtil {
 
 	public static final String PROJECTS_SOURCE_DIR_KEY = "jp.co.dgic.eclipse.project.source.dir";
@@ -51,7 +47,7 @@ public class DJUnitUtil {
 	private static String[] DEFAULT_EXCLUSIONS = {
 			"junit.framework.", "org.objectweb.asm.",
 			"junit.extensions.", "junit.runner.", "com.jcoverage.",
-			"jp.co.dgic.testing.", "org.eclipse.", "org.apache.oro." };
+			"jp.co.dgic.testing.", "org.eclipse." };
 
 	public static boolean isDJUnitSystemClass(String className) {
 		if (className.startsWith("jp.co.dgic.testing.common")
@@ -159,37 +155,6 @@ public class DJUnitUtil {
 				return true;
 		}
 		return false;
-	}
-
-	public static boolean isInclude(String className) {
-		String[] patterns = getTraceIncludPatterns();
-		if (patterns == null) {
-			return false;
-		}
-
-		Perl5Matcher matcher = new Perl5Matcher();
-		PatternCompiler compiler = new Perl5Compiler();
-		for (int index = 0; index < patterns.length; index++) {
-			try {
-				if (matcher.matches(className, compiler.compile(patterns[index]))) {
-					return true;
-				}
-			} catch (Exception e) {
-				// continue
-			}
-
-		}
-		return false;
-	}
-
-	private static String[] getTraceIncludPatterns() {
-		String excludedPatterns = System
-				.getProperty(TRACE_INCLUDE_PATTERNS_KEY);
-
-		if (excludedPatterns == null)
-			return null;
-
-		return DJUnitUtil.splitValue(excludedPatterns);
 	}
 
 	public static String getJavaProjectType(String key) {

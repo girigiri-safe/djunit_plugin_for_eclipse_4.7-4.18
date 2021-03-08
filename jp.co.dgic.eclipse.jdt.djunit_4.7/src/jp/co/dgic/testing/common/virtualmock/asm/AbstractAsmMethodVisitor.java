@@ -114,7 +114,7 @@ public abstract class AbstractAsmMethodVisitor extends MethodVisitor implements 
 			return;
 		}
 
-		InternalMockObjectManager.printConsole("[INVOKE METHOD] : " + (isStaticMethod ? " static " : " ") + owner + "#" + name + " " + desc);
+		InternalMockObjectManager.printConsole("[INVOKE METHOD] : itf = " + itf + ", opcode=" + opcode + (isStaticMethod ? " static " : " ") + owner + "#" + name + " " + desc);
 
 		// createCreateArgsArray
 		Label hasMockReturnValue = new Label();

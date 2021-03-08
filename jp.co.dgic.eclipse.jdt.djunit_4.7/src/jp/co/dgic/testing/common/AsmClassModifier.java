@@ -52,10 +52,11 @@ public class AsmClassModifier implements IClassModifier {
 //		AsmClassChecker acc = new AsmClassChecker();
 //		cr.accept(acc);
 
-		if (acc.isInterface()) {
-			InternalMockObjectManager.printConsole(">>>>> " + className + " is Interface.");
-			return null;
-		}
+		// for java8 interface default method, interface static method
+//		if (acc.isInterface()) {
+//			InternalMockObjectManager.printConsole(">>>>> " + className + " is Interface.");
+//			return null;
+//		}
 
 		// version 0.8.5
 		if (acc.isAnnotation()) {
