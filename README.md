@@ -1,5 +1,5 @@
 # djunit_plugin_for_eclipse_4.7-4.18
-djUnit plusin for Eclipse version 4.7 - 4.18(2020-12)
+djUnit plusin for Eclipse version 4.7 - 4.18(2020-12)  
 
 current version 0.9.0
 
@@ -17,6 +17,8 @@ current version 0.9.0
 |4.16|2020-06|
 |4.17|2020-09|
 |4.18|2020-12|
+
+for version 3.7 - 4.6 is [here](https://piecemeal-technology-inc.github.io/djunit_plugin_for_eclipse_3.7-4.6/).
 
 ---
 
