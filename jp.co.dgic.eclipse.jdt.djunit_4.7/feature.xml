@@ -46,6 +46,6 @@ feature into your product.
          id="jp.co.dgic.eclipse.jdt.djunit"
          download-size="1155"
          install-size="1466"
-         version="0.8.6"/>
+         version="0.9.0"/>
 
 </feature>
