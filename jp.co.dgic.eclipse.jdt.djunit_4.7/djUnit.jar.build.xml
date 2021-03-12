@@ -1,0 +1,68 @@
+<?xml version="1.0" ?>
+<project default="release">
+
+	<description>create djUnit.jar</description>
+
+	<property name="version" value="0.9.0" />
+	<property name="eclipse.version" value="4.7.x" />
+
+	<property name="jar.name" value="djunit-${version}.jar" />
+	<property name="updatesite.zip.name" value="djunit-${version}-eclipse${eclipse.version}-updatesite.zip" />
+	<property name="dist.dir" value="dist" />
+
+	<property name="updatesite.dir" value="../jp.co.dgic.eclipse.jdt.djunit.updatesite" />
+	<property name="updatesite.temp.dir" value="${dist.dir}/updatesite" />
+
+		<property name="asm1.5.x.folder" value="../djUnit-asm-1.5.x" />
+	<property name="asm2.x.folder" value="../djUnit-asm-2.x" />
+
+	<target name="release">
+
+		<delete dir="${dist.dir}" />
+		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${updatesite.temp.dir}" />
+
+		<!-- copy properties files to classes directory -->
+		<copy todir="${dist.dir}/bin">
+			<fileset dir="src" includes="resources*.properties">
+			</fileset>
+		</copy>
+
+		<!-- copy bin files to bin directory -->
+		<copy todir="${dist.dir}/bin">
+			<fileset dir="bin" />
+			<fileset dir="${asm1.5.x.folder}/bin" />
+			<fileset dir="${asm2.x.folder}/bin" />
+		</copy>
+
+		<!-- create djunit.jar -->
+		<zip destfile="${dist.dir}/${jar.name}">
+			<zipfileset dir="${dist.dir}/bin">
+				<exclude name="**/ByteCodeInstrument.class" />
+				<exclude name="**/Instrument.class" />
+				<exclude name="**/TraceImplementer.class" />
+				<exclude name="**/AdviceImplementer.class" />
+				<exclude name="**/AbstractModifier.class" />
+				<exclude name="**/ClassModifier.class" />
+				<exclude name="jp/co/dgic/testing/common/instrument/*.class" />
+			</zipfileset>
+		</zip>
+
+		<!-- copy update site files to dist directory -->
+		<copy todir="${updatesite.temp.dir}">
+			<fileset dir="${updatesite.dir}" >
+				<exclude name="logs.zip"/>
+				<exclude name=".project"/>
+			</fileset>
+		</copy>
+
+		<!-- create update site zip -->
+		<zip destfile="${dist.dir}/${updatesite.zip.name}">
+			<zipfileset dir="${updatesite.temp.dir}" />
+		</zip>
+
+		<delete dir="${dist.dir}/bin" />
+		<delete dir="${updatesite.temp.dir}" />
+	</target>
+
+</project>

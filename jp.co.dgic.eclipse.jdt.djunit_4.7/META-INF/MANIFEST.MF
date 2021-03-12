@@ -53,3 +53,4 @@ Require-Bundle: org.eclipse.ui.ide,
  org.eclipse.jdt.debug
 Eclipse-LazyStart: true
 Plugin-Class: jp.co.dgic.eclipse.jdt.internal.junit.ui.DJUnitPlugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
