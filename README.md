@@ -26,9 +26,9 @@ for version 3.7 - 4.6 is [here](https://piecemeal-technology-inc.github.io/djuni
 - runnable on eclipse3.7 to 4.6.
 - java8 not supported.
 
-Update Site: [https://piecemeal-technology-inc.github.io/djunit_plugin_for_eclipse_4.7-4.18/0.8.6/site.xml](https://piecemeal-technology-inc.github.io/djunit_plugin_for_eclipse_4.7-4.18/0.8.6/site.xml)
-
-Download link: [djunit.jar](https://piecemeal-technology-inc.github.io/djunit_plugin_for_eclipse_4.7-4.18/0.8.6/djunit-0.8.6.jar)
+Update Site: [https://piecemeal-technology-inc.github.io/djunit_plugin_for_eclipse_4.7-4.18/updatesite/0.8.6/](https://piecemeal-technology-inc.github.io/djunit_plugin_for_eclipse_4.7-4.18/updatesite/0.8.6/)  
+Download: [djunit.jar](https://piecemeal-technology-inc.github.io/djunit_plugin_for_eclipse_4.7-4.18/updatesite/0.8.6/djunit-0.8.6.jar)  
+Download Updatesite.zip: [djunit-0.8.6-eclipse4.7.x-updatesite.zip](https://piecemeal-technology-inc.github.io/djunit_plugin_for_eclipse_4.7-4.18/updatesite/0.8.6/djunit-0.8.6-eclipse4.7.x-updatesite.zip)  
 
 ---
 
@@ -37,6 +37,6 @@ Download link: [djunit.jar](https://piecemeal-technology-inc.github.io/djunit_pl
 - Repackaged ASM 5.x, 9.x. included.
 - java8 and java11 supported.
 
-Update Site: [https://piecemeal-technology-inc.github.io/djunit_plugin_for_eclipse_4.7-4.18/0.9.0/site.xml](https://piecemeal-technology-inc.github.io/djunit_plugin_for_eclipse_4.7-4.18/0.9.0/site.xml)
-
-Download link: [djunit.jar](https://piecemeal-technology-inc.github.io/djunit_plugin_for_eclipse_4.7-4.18/0.9.0/djunit-0.9.0.jar)
+Update Site: [https://piecemeal-technology-inc.github.io/djunit_plugin_for_eclipse_4.7-4.18/updatesite/0.9.0/](https://piecemeal-technology-inc.github.io/djunit_plugin_for_eclipse_4.7-4.18/updatesite/0.9.0/)  
+Download: [djunit.jar](https://piecemeal-technology-inc.github.io/djunit_plugin_for_eclipse_4.7-4.18/updatesite/0.9.0/djunit-0.9.0.jar)  
+Download Updatesite.zip: [djunit-0.9.0-eclipse4.7.x-updatesite.zip](https://piecemeal-technology-inc.github.io/djunit_plugin_for_eclipse_4.7-4.18/updatesite/0.9.0/djunit-0.9.0-eclipse4.7.x-updatesite.zip)  
