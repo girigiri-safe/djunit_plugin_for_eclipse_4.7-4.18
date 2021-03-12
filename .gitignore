@@ -1,4 +1,10 @@
+.metadata
 .settings
 dist
 .djunitplugin
 bin
+jp.co.dgic.eclipse.jdt.djunit.updatesite/artifacts.jar
+jp.co.dgic.eclipse.jdt.djunit.updatesite/content.jar
+jp.co.dgic.eclipse.jdt.djunit.updatesite/features
+jp.co.dgic.eclipse.jdt.djunit.updatesite/plugins
+jp.co.dgic.eclipse.jdt.djunit.updatesite/logs.zip
