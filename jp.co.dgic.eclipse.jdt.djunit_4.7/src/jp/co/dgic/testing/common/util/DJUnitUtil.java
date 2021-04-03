@@ -24,21 +24,60 @@ package jp.co.dgic.testing.common.util;
 import java.io.File;
 import java.util.StringTokenizer;
 
+import jp.co.dgic.eclipse.jdt.internal.coverage.util.CoverageUtil;
+import jp.co.dgic.testing.common.virtualmock.VirtualMockUtil;
+
 public class DJUnitUtil {
 
 	public static final String PROJECTS_SOURCE_DIR_KEY = "jp.co.dgic.eclipse.project.source.dir";
+	public static final String DJUNIT_TARGET_SRC_DIR = "djunit.target.src.dir";
 
 	public static final String JUNIT_EXCLUDES_PATHS_KEY = "jp.co.dgic.eclipse.junit.excluded.paths";
 
 	public static final String TRACE_INCLUDE_PATTERNS_KEY = "jp.co.dgic.eclipse.trace.include.patterns";
 
 	public static final String BYTECODE_LIBRARY_KEY = "jp.co.dgic.eclipse.classloader.bytecodelibrary";
+	public static final String DJUNIT_ASM_VERSION = "djunit.asm.version";
+	
+	public static final String DJUNIT_VIRTUALMOCK_ENABLE = "djunit.virtualmock.enable";
+	public static final String DJUNIT_COVERAGE_ENABLE = "djunit.coverage.enable";
 
 //	public static final String BYTECODE_LIBRARY_ASM = "ASM";
 //	public static final String BYTECODE_LIBRARY_ASM2 = "ASM2";
 //	public static final String BYTECODE_LIBRARY_ASM15 = "ASM15";
 	public static final String BYTECODE_LIBRARY_ASM5 = "ASM5";
 	public static final String BYTECODE_LIBRARY_ASM9 = "ASM9";
+	
+	private static final int ASM4 = 4 << 16 | 0 << 8;
+	private static final int ASM5 = 5 << 16 | 0 << 8;
+	private static final int ASM6 = 6 << 16 | 0 << 8;
+	private static final int ASM7 = 7 << 16 | 0 << 8;
+	private static final int ASM8 = 8 << 16 | 0 << 8;
+	private static final int ASM9 = 9 << 16 | 0 << 8;
+	
+	public static int ASM_API_VERSION;
+	static {
+		
+		overwriteVMArg(DJUNIT_ASM_VERSION, BYTECODE_LIBRARY_KEY);
+		overwriteVMArg(DJUNIT_TARGET_SRC_DIR, PROJECTS_SOURCE_DIR_KEY);
+		overwriteVMArg(DJUNIT_VIRTUALMOCK_ENABLE, VirtualMockUtil.VIRTUALMOCK_USE_VIRTUALMOCK_KEY);
+		overwriteVMArg(DJUNIT_COVERAGE_ENABLE, CoverageUtil.COVERAGE_USE_COVERAGE_KEY);
+		
+		ASM_API_VERSION = ASM9;
+		String library = System.getProperty(DJUnitUtil.BYTECODE_LIBRARY_KEY);
+		if (BYTECODE_LIBRARY_ASM5.equalsIgnoreCase(library)) {
+			ASM_API_VERSION = ASM5;
+		}
+	}
+
+	private static void overwriteVMArg(String srcKey, String destKey) {
+		String srcValue = System.getProperty(srcKey);
+		if (srcValue == null || "".equals(srcValue) ) {
+			return;
+		}
+		System.setProperty(destKey, srcValue);
+	}
+
 	
 	private static String[] sourceDirectries;
 	private static String[] classExclusions;

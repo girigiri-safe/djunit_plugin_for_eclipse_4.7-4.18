@@ -59,7 +59,7 @@ public abstract class AbstractAsmMethodVisitor extends MethodVisitor implements 
 	protected boolean isAfterDup = false;
 
 	public AbstractAsmMethodVisitor(MethodVisitor methodVisitor, String className, String methodName, String desc, String signature, boolean isStatic, String[] exceptions, int maxLocals, String[] superClassNames) {
-		super(Opcodes.ASM5, methodVisitor);
+		super(DJUnitUtil.ASM_API_VERSION, methodVisitor);
 		this._className = className;
 		this._methodName = methodName;
 		this._desc = desc;

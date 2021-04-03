@@ -30,6 +30,7 @@ import com.jcoverage.coverage.InstrumentData;
 import jp.co.dgic.djunit.asm.Label;
 import jp.co.dgic.djunit.asm.MethodVisitor;
 import jp.co.dgic.djunit.asm.Opcodes;
+import jp.co.dgic.testing.common.util.DJUnitUtil;
 import jp.co.dgic.testing.common.virtualmock.InternalMockObjectManager;
 
 public class AsmMethodInstrumenter extends MethodVisitor implements Opcodes {
@@ -46,7 +47,7 @@ public class AsmMethodInstrumenter extends MethodVisitor implements Opcodes {
 
 	public AsmMethodInstrumenter(MethodVisitor mv, String className, String name, String desc,
 								InstrumentData instrumentData) {
-		super(Opcodes.ASM5, mv);
+		super(DJUnitUtil.ASM_API_VERSION, mv);
 //		super(mv);
 
 		this.instrumentData = instrumentData;

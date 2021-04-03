@@ -2,9 +2,12 @@
 <feature
       id="jp.co.dgic.eclipse.jdt.djunit.feature"
       label="djUnit plugin for Eclipse 4.7.x"
-      version="0.9.0">
+      version="0.9.1">
 
    <description>
+      0.9.1 [2021/04/01]
+       - AppClassLoader compatibility issue fixed for Java9.(Base ClassLoader No Longer from URLClassLoader)
+       - Improved compatibility with VSCode "java test runner" , Maven and ANT.
       0.9.0 [2021/03/05]
        - ASM 3.x, 2.x and 1.5 removed.
        - Repackaged ASM 5.x, 9.x. included.
@@ -46,6 +49,6 @@ feature into your product.
          id="jp.co.dgic.eclipse.jdt.djunit"
          download-size="1155"
          install-size="1466"
-         version="0.9.0"/>
+         version="0.9.1"/>
 
 </feature>

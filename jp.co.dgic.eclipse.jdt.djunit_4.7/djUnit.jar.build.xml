@@ -3,7 +3,7 @@
 
 	<description>create djUnit.jar</description>
 
-	<property name="version" value="0.9.0" />
+	<property name="version" value="0.9.1" />
 	<property name="eclipse.version" value="4.7.x" />
 
 	<property name="jar.name" value="djunit-${version}.jar" />
@@ -12,9 +12,6 @@
 
 	<property name="updatesite.dir" value="../jp.co.dgic.eclipse.jdt.djunit.updatesite" />
 	<property name="updatesite.temp.dir" value="${dist.dir}/updatesite" />
-
-		<property name="asm1.5.x.folder" value="../djUnit-asm-1.5.x" />
-	<property name="asm2.x.folder" value="../djUnit-asm-2.x" />
 
 	<target name="release">
 
@@ -31,8 +28,6 @@
 		<!-- copy bin files to bin directory -->
 		<copy todir="${dist.dir}/bin">
 			<fileset dir="bin" />
-			<fileset dir="${asm1.5.x.folder}/bin" />
-			<fileset dir="${asm2.x.folder}/bin" />
 		</copy>
 
 		<!-- create djunit.jar -->

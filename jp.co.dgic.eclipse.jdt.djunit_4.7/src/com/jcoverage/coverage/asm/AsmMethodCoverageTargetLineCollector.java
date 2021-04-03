@@ -3,13 +3,14 @@ package com.jcoverage.coverage.asm;
 import jp.co.dgic.djunit.asm.Label;
 import jp.co.dgic.djunit.asm.MethodVisitor;
 import jp.co.dgic.djunit.asm.Opcodes;
+import jp.co.dgic.testing.common.util.DJUnitUtil;
 
 public class AsmMethodCoverageTargetLineCollector extends MethodVisitor {
 
 	private AsmClassCoverageTargetLineCollector classLineCollector;
 
 	public AsmMethodCoverageTargetLineCollector(AsmClassCoverageTargetLineCollector classLineCollector) {
-		super(Opcodes.ASM5);
+		super(DJUnitUtil.ASM_API_VERSION);
 //		super(new AsmEmptyVisitor());
 		this.classLineCollector = classLineCollector;
 	}

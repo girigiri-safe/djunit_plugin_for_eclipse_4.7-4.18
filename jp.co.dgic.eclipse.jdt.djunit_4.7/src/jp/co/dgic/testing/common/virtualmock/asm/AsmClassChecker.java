@@ -60,7 +60,7 @@ public class AsmClassChecker extends ClassVisitor {
 	private static HashMap _classCheckers = new HashMap();
 
 	private AsmClassChecker() {
-		super(Opcodes.ASM5);
+		super(DJUnitUtil.ASM_API_VERSION);
 //		super(new AsmEmptyVisitor());
 	}
 

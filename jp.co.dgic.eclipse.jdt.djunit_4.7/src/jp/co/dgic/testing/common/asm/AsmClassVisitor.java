@@ -3,6 +3,7 @@ package jp.co.dgic.testing.common.asm;
 import jp.co.dgic.djunit.asm.ClassVisitor;
 import jp.co.dgic.djunit.asm.MethodVisitor;
 import jp.co.dgic.djunit.asm.Opcodes;
+import jp.co.dgic.testing.common.util.DJUnitUtil;
 import jp.co.dgic.testing.common.virtualmock.InternalMockObjectManager;
 import jp.co.dgic.testing.common.virtualmock.asm.AsmClassChecker;
 import jp.co.dgic.testing.common.virtualmock.asm.AsmConstractorVisitor;
@@ -15,7 +16,7 @@ public class AsmClassVisitor extends ClassVisitor {
 	protected AsmClassWriter classWriter;
 
 	public AsmClassVisitor(AsmClassChecker acc) {
-		super(Opcodes.ASM5);
+		super(DJUnitUtil.ASM_API_VERSION);
 		this.acc = acc;
 		this.classWriter = new AsmClassWriter();
 		this.cv = this.classWriter;
@@ -37,7 +38,7 @@ public class AsmClassVisitor extends ClassVisitor {
 
 		InternalMockObjectManager.printConsole("#################################################################");
 		InternalMockObjectManager.printConsole("#################################################################");
-		InternalMockObjectManager.printConsole("### [Asm5ClassVisitor.visitMethod]" + access + (isStatic ? " static " : " ") + name + " " + signature);
+		InternalMockObjectManager.printConsole("### [AsmClassVisitor.visitMethod] " + access + (isStatic ? " static " : " ") + name + " " + signature);
 		InternalMockObjectManager.printConsole("#################################################################");
 		InternalMockObjectManager.printConsole("#################################################################");
 

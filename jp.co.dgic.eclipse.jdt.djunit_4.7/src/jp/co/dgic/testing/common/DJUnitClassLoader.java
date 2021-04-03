@@ -20,8 +20,11 @@
  */
 package jp.co.dgic.testing.common;
 
+import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.net.URLClassLoader;
 
 import jp.co.dgic.testing.common.util.DJUnitUtil;
@@ -30,15 +33,35 @@ import jp.co.dgic.testing.common.virtualmock.InternalMockObjectManager;
 public class DJUnitClassLoader extends URLClassLoader {
 
 	private static final String ASM_CLASS_MODIFIER_CLASS_NAME = "jp.co.dgic.testing.common.AsmClassModifier";
-	private static final String ASM_15x_CLASS_MODIFIER_CLASS_NAME = "jp.co.dgic.testing.common.Asm15xClassModifier";
+//	private static final String ASM_15x_CLASS_MODIFIER_CLASS_NAME = "jp.co.dgic.testing.common.Asm15xClassModifier";
 	
 	private static final String CLASS_MODIFIER_MTHOD_NAME = "getModifiedClass";
+	
+	private static URL[] createURLsFromJavaClassPath() {
+		String pathSeparator = System.getProperty("path.separator");
+        String classpath = System.getProperty("java.class.path");
+        String[] entries = classpath.split(pathSeparator);
+        URL[] urls = new URL[entries.length];
+        for(int i = 0; i < entries.length; i++) {
+        	try {
+        		urls[i] = new File(entries[i]).toURI().toURL();
+        		InternalMockObjectManager.printConsole("#################################################");
+        		InternalMockObjectManager.printConsole("#### DJUnitClassLoader createURLsFromJavaClassPath  [" + urls[i] + "]");
+        		InternalMockObjectManager.printConsole("#################################################");
+        	} catch (MalformedURLException e) {
+        		e.printStackTrace();
+        		throw new Error("djUnit initialize error in createURLsFromJavaClassPath [" + entries[i] + "]", e);
+        	}
+        }
+        return urls;
+	}
 
 	/** Class Modifier */
 	protected Object classModifier;
 
 	public DJUnitClassLoader(ClassLoader parent) {
-		super(((URLClassLoader) parent).getURLs(), parent.getParent());
+//		super(((URLClassLoader) parent).getURLs(), parent.getParent());
+		super(DJUnitClassLoader.createURLsFromJavaClassPath(), parent.getParent());
 
 		createClassModifier();
 	}
@@ -93,7 +116,7 @@ public class DJUnitClassLoader extends URLClassLoader {
 
 	public void createClassModifier() {
 
-		String library = System.getProperty(DJUnitUtil.BYTECODE_LIBRARY_KEY);
+//		String library = System.getProperty(DJUnitUtil.BYTECODE_LIBRARY_KEY);
 		String modifierClassName = ASM_CLASS_MODIFIER_CLASS_NAME;
 //		if (DJUnitUtil.BYTECODE_LIBRARY_ASM15.equalsIgnoreCase(library)) {
 //			modifierClassName = ASM_15x_CLASS_MODIFIER_CLASS_NAME;

@@ -9,6 +9,7 @@ import jp.co.dgic.djunit.asm.ClassVisitor;
 import jp.co.dgic.djunit.asm.Label;
 import jp.co.dgic.djunit.asm.MethodVisitor;
 import jp.co.dgic.djunit.asm.Opcodes;
+import jp.co.dgic.testing.common.util.DJUnitUtil;
 
 public class AsmClassCoverageTargetLineCollector extends ClassVisitor {
 
@@ -17,7 +18,7 @@ public class AsmClassCoverageTargetLineCollector extends ClassVisitor {
 	private Set finallyBlocks = new HashSet();
 
 	public AsmClassCoverageTargetLineCollector() {
-		super(Opcodes.ASM5);
+		super(DJUnitUtil.ASM_API_VERSION);
 //		super(new AsmEmptyVisitor());
 	}
 

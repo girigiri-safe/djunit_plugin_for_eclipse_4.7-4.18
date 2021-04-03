@@ -24,6 +24,7 @@ package jp.co.dgic.testing.common.virtualmock.asm;
 import jp.co.dgic.djunit.asm.AnnotationVisitor;
 import jp.co.dgic.djunit.asm.MethodVisitor;
 import jp.co.dgic.djunit.asm.Opcodes;
+import jp.co.dgic.testing.common.util.DJUnitUtil;
 
 public class AsmMethodChecker extends MethodVisitor {
 
@@ -34,7 +35,7 @@ public class AsmMethodChecker extends MethodVisitor {
 	private String desc;
 
 	public AsmMethodChecker(AsmClassChecker acc, String name, String desc) {
-		super(Opcodes.ASM5);
+		super(DJUnitUtil.ASM_API_VERSION);
 //		super(new AsmEmptyVisitor());
 		this.acc = acc;
 		this.name = name;

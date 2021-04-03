@@ -26,6 +26,7 @@ import java.util.Set;
 import jp.co.dgic.djunit.asm.ClassVisitor;
 import jp.co.dgic.djunit.asm.MethodVisitor;
 import jp.co.dgic.djunit.asm.Opcodes;
+import jp.co.dgic.testing.common.util.DJUnitUtil;
 import jp.co.dgic.testing.common.virtualmock.InternalMockObjectManager;
 
 import com.jcoverage.coverage.InstrumentData;
@@ -42,7 +43,7 @@ public class AsmClassInstrumenter extends ClassVisitor {
 	private Set finallyLines;
 
 	public AsmClassInstrumenter(ClassVisitor cv) {
-		super(Opcodes.ASM5, cv);
+		super(DJUnitUtil.ASM_API_VERSION, cv);
 	}
 
 	public boolean isEnum() {

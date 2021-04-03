@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: jp.co.dgic.eclipse.jdt.djunit; singleton:=true
-Bundle-Version: 0.9.0
+Bundle-Version: 0.9.1
 Bundle-ClassPath: djunit.jar,
  lib/jcoverage-djunit-1.0.5.jar,
  lib/djunit-asm-5.2.jar

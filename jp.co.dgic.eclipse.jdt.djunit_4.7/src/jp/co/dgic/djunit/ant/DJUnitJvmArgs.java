@@ -71,9 +71,11 @@ public class DJUnitJvmArgs {
 	private static final String VIRTUALMOCK_NOTIGNORE_PATTERNS_KEY = "jp.co.dgic.eclipse.virtualmock.notignore.patterns";
 	private static final String BYTECODE_LIBRARY_KEY = "jp.co.dgic.eclipse.classloader.bytecodelibrary";
 
-	private static final String BYTECODE_LIBRARY_ASM = "ASM";
-	private static final String BYTECODE_LIBRARY_ASM2 = "ASM2";
-	private static final String BYTECODE_LIBRARY_ASM15 = "ASM15";
+//	private static final String BYTECODE_LIBRARY_ASM = "ASM";
+//	private static final String BYTECODE_LIBRARY_ASM2 = "ASM2";
+//	private static final String BYTECODE_LIBRARY_ASM15 = "ASM15";
+	private static final String BYTECODE_LIBRARY_ASM5 = "ASM5";
+	private static final String BYTECODE_LIBRARY_ASM9 = "ASM9";
 
 	private static final String JUNIT_DEFAULT_EXCLUDED_PATHS = "";
 //		"sun.*;"
@@ -99,7 +101,7 @@ public class DJUnitJvmArgs {
 
 	private File baseDir;
 
-	private String asmVersion = "ASM";
+	private String asmVersion = "ASM9";
 
 	public void setBaseDir(File baseDir) {
 		this.baseDir = baseDir;
@@ -134,7 +136,7 @@ public class DJUnitJvmArgs {
 	}
 
 	public void setAsmVersion(String version) {
-		// ASM, ASM2, ASM15
+		// ASM5, ASM9
 		this.asmVersion = version;
 	}
 
@@ -159,9 +161,8 @@ public class DJUnitJvmArgs {
 	}
 
 	private String getAsmVersion() {
-		if (BYTECODE_LIBRARY_ASM2.equalsIgnoreCase(asmVersion)) return BYTECODE_LIBRARY_ASM2;
-		if (BYTECODE_LIBRARY_ASM15.equalsIgnoreCase(asmVersion)) return BYTECODE_LIBRARY_ASM15;
-		return BYTECODE_LIBRARY_ASM;
+		if (BYTECODE_LIBRARY_ASM5.equalsIgnoreCase(asmVersion)) return BYTECODE_LIBRARY_ASM5;
+		return BYTECODE_LIBRARY_ASM9;
 	}
 
 	private String toAbsolutecDir(String targetSrcDir) {
