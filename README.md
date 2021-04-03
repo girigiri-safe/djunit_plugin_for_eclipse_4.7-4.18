@@ -20,6 +20,8 @@ djUnit plugin for Eclipse version 4.7 - 4.18(2020-12)
 
 for Eclipse 3.7 - 4.6 is [here](https://piecemeal-technology-inc.github.io/djunit_plugin_for_eclipse_3.7-4.6/).
 
+Maven Repository: [https://piecemeal-technology-inc.github.io/djunit-maven-repo/<](https://piecemeal-technology-inc.github.io/djunit-maven-repo/<)
+
 ---
 
 ## Tips
@@ -51,6 +53,60 @@ for Eclipse 3.7 - 4.6 is [here](https://piecemeal-technology-inc.github.io/djuni
 |djunit.virtualmock.enable|true||Yes|
 |djunit.asm.version|ASM9 or ASM5|ASM9|No|
 |djunit.target.src.dir|path to your source folder||Yes|
+
+<br>
+<br>
+
+> Running djUnit with Maven Surefire Plugin. (djUnit 0.9.1 and later)
+
+- Add the followings in your settings.xml or pom.xml
+
+```
+  <repositories>
+    <repository>
+      <id>djunit.repository</id>
+      <name>djUnit repository</name>
+      <url>https://piecemeal-technology-inc.github.io/djunit-maven-repo/</url>
+    </repository>
+  </repositories>
+```
+```
+  <dependencies>
+    ...
+    <dependency>
+      <groupId>jp.co.pmtech</groupId>
+      <artifactId>djunit</artifactId>
+      <version>0.9.1</version>
+    </dependency>
+    <dependency>
+      <groupId>jp.co.pmtech</groupId>
+      <artifactId>djunit-asm</artifactId>
+      <version>9.1</version>
+    </dependency>
+    ...
+  </dependencies>
+```
+```
+<build>
+    <pluginManagement>
+      <plugins>
+        ...
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>...</version>
+          <configuration>
+            <includes>
+              <include>**/AllTests.java</include>
+            </includes>
+            <argLine>-Djava.system.class.loader=jp.co.dgic.testing.common.DJUnitClassLoader -Ddjunit.coverage.enable=true -Ddjunit.virtualmock.enable=true -Ddjunit.asm.version=ASM9 -Ddjunit.target.src.dir=${project.basedir}\src\main\java</argLine>
+          </configuration>
+        </plugin>
+        ...
+      </plugins>
+    </pluginManagement>
+  </build>
+
+```
 
 <br>
 <br>
