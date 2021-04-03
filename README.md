@@ -20,7 +20,7 @@ djUnit plugin for Eclipse version 4.7 - 4.18(2020-12)
 
 for Eclipse 3.7 - 4.6 is [here](https://piecemeal-technology-inc.github.io/djunit_plugin_for_eclipse_3.7-4.6/).
 
-Maven Repository: [https://piecemeal-technology-inc.github.io/djunit-maven-repo/<](https://piecemeal-technology-inc.github.io/djunit-maven-repo/<)
+Maven Repository: [https://piecemeal-technology-inc.github.io/djunit-maven-repo/](https://piecemeal-technology-inc.github.io/djunit-maven-repo/)
 
 ---
 
